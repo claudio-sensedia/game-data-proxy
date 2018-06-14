@@ -1,0 +1,14 @@
+{
+  "name": "game-data-proxy",
+  "version": "1.0.0",
+  "description": "Game Data Proxy for World Cup 2018",
+  "author": "claudio.oliveira@sensedia.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "request": "^2.87.0"
+  }
+}
