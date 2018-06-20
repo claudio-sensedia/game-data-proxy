@@ -17,12 +17,14 @@ app.get('/matches', (req, res) => {
     console.log('error:', error);
     console.log('statusCode:', response && response.statusCode);
     console.log('body:', body);
-    body.version = SERVICE_VERSION;
-    res.json(body);
+    const content = JSON.parse(body);
+    content.version = SERVICE_VERSION;
+    res.json(content);
   });
 });
 
 app.get('/healthcheck', (req, res) => {
+  console.log(`Game Data Proxy Running on http://${HOST}:${PORT}`);
   res.json({status: "OK", version : SERVICE_VERSION});
 });
 
