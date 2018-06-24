@@ -7,14 +7,13 @@ const request = require('request');
 const PORT = 9999;
 const HOST = '0.0.0.0';
 const MATCHES_SERVICES = process.env.MATCHES_SERVICES || 'game-data';
-const SERVICE_VERSION = process.env.VERSION || 'v1';
+const SERVICE_VERSION = process.env.VERSION || 'v4';
 
 const app = express();
 app.get('/matches', (req, res) => {
     const url = MATCHES_SERVICES;
     console.log('URL:', url);
     let tracingHeaders = headers(req);
-    console.log('HEADERS PROXY:', JSON.stringify(tracingHeaders));
     let options = {
         url: url,
         headers: tracingHeaders
@@ -37,7 +36,6 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 
 function headers(req) {
-    console.log('ORIGINAL HEADERS: ' + JSON.stringify(req.headers));
     let incomingHeaders = ['x-request-id',
         'x-b3-traceid',
         'x-b3-spanid',
