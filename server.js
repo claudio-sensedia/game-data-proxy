@@ -21,9 +21,11 @@ app.get('/matches', (req, res) => {
     request(options, function (error, response, body) {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
-        let content = JSON.parse(body);
-        content.version = SERVICE_VERSION;
-        res.json(content);
+        let matches = JSON.parse(body);
+        let result = {};
+        result.matches = matches;
+        result.version = SERVICE_VERSION;
+        res.json(result);
     });
 });
 
